@@ -1,0 +1,12 @@
+## v1 -> v2
+- Final Output: Removed all mentions of market size ceiling, revenue cap, and growth limitation language throughout the audit
+- Final Output: Added "Adjacent Product Page Targeting" as a major growth lever in Section 5 (Ad Analysis) with detailed target ASIN categories table (powder face washes, powder cleansers, exfoliating powders, organic face masks, powder shampoos)
+- Final Output: Integrated product page targeting into the 8-week action plan (Weeks 2-4 launch, Weeks 4-6 scale, Weeks 6-8 expand)
+- Final Output: Updated Section 7 insights to highlight product discovery opportunity in adjacent categories (~10,000+ monthly searches)
+- Final Output: Removed question about product line expansion framed around market ceiling
+- Final Output: Increased total recommended ad budget from $12-22/day to $17-32/day to include product page targeting
+- SQP Analysis: Removed "very small market" framing and "realistic growth ceiling" paragraph
+- SQP Analysis: Added product page targeting as growth path in summary
+- SQP Analysis: Reframed question for seller about product line expansion (removed ceiling language)
+- Ad Analysis: Added Campaign 5 (Adjacent Product Page Targeting) with detailed strategy
+- Ad Analysis: Renamed "What PPC Cannot Solve" to "Areas to Monitor" and removed market size constraint bullet
