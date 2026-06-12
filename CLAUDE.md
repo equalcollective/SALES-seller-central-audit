@@ -195,6 +195,17 @@ When starting Step 2, check the `parent_asin` field and whether other children e
 
 Product-level deep dives (Product Understanding, SQP insights, Ad insights) are performed **only on the hero ASIN (P0)** by default. Do not automatically deep-dive into P1, P2, or P3.
 
+## Important: Reuse an Existing PDP Audit
+
+A PDP audit (run via the `/pdp-audit` skill before the discovery call) covers almost exactly what Step 2 produces, from the same Keepa + web sources. So when a PDP audit already exists for this brand, you may be able to reuse it instead of redoing Step 2. The decision is binary, and it turns entirely on the product (the ASIN):
+
+1. **Does a PDP audit exist for this brand?** Check Notion (under "PDP Audits"); a local copy may also exist at `PDP audits/{Brand} - PDP Audit.md`. If none exists, perform Step 2 fresh per [Product Understanding.md](./Product%20Understanding.md).
+2. **Is it for the exact same product as the selected P0?** Compare the PDP audit's ASIN to the P0 ASIN.
+   - **ASIN does not match (different product):** ignore the PDP audit entirely and perform Step 2 fresh per [Product Understanding.md](./Product%20Understanding.md).
+   - **ASIN matches (exact same product):** use the PDP audit's Product, Customer, Brand, Competitive Landscape, and Listing Quality findings as the Section 2 input, then add the SC-only quantitative layer (Section 3) and continue to Steps 3 and 4.
+
+Only an exact ASIN match qualifies. A different child under the same brand, or a similar but different product, does not. When in doubt, do Step 2 fresh.
+
 ## Folder Structure
 
 For every new seller audit, create a folder named after the seller inside `seller-central-audits/All Audits/`. All audit output files for that seller go inside this folder. Example:
@@ -216,6 +227,7 @@ Build catalog understanding, select a hero ASIN (P0) and focus ASINs (P1, P2, P3
 
 ### Step 2: Product Understanding
 Deep-dive into the selected P0 ASIN - what is the product, who buys it, competitive landscape, pricing, rating trajectory, and sales rank history. Uses Keepa data via Metabase.
+**First check for a reusable PDP audit** (see "Important: Reuse an Existing PDP Audit" above). If a PDP audit exists for the **exact same product** as this P0 (matching ASIN), use it as the Step 2 input; otherwise do Step 2 fresh.
 → See [Product Understanding.md](./Product%20Understanding.md)
 
 ### Step 3: SQP Analysis
