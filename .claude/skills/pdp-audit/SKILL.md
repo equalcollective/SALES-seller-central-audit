@@ -38,6 +38,11 @@ The closer needs to skim this quickly before the discovery call. To ensure this:
 - Use bullet points and sub-bullets for clarity. Dense paragraphs are harder to skim than structured pointers
 - Whenever referencing a product, include both the **ASIN and product name**
 
+## Domain Knowledge: Listing and Content
+
+### A+ Content Best Practice
+A+ content should be image-only with no standalone text modules. In 2026, shoppers are visual and do not want to read blocks of text on a product page. The ideal A+ layout is high-quality images with any necessary text (feature callouts, comparison info, FAQs) designed directly onto the images themselves. When evaluating a listing's A+ content, do not flag "zero text word count" as an opportunity. Instead, assess whether the images themselves communicate the key selling points effectively. The only time A+ text is a concern is when the images are generic or fail to convey product benefits, in which case the fix is better images with text overlays, not adding standalone text modules.
+
 ## Data Sources
 
 **Keepa-sourced ASIN database** via Metabase MCP (Database: "Jeff Azure Db Public", ID: 4, schema: `orange_schema`):
@@ -92,10 +97,10 @@ WHERE asin = '<ASIN>'
 
 If multiple rows (marketplaces) are returned, pick the one with the higher `rating_dist_total` and use that row's `id` going forward.
 
-Then download and view the main product image:
-1. Extract the `main` value from the `images` JSONB field
-2. Construct URL: `https://m.media-amazon.com/images/I/{image_id}`
-3. Download via curl and view
+Then download and view ALL product images, not just the main one:
+1. Extract the `main` value and every entry in `variants` from the `images` JSONB field
+2. Construct each URL: `https://m.media-amazon.com/images/I/{image_id}`
+3. Download all via curl and view each one. You need the full image set to judge the hero, the secondary images, and what is missing, since Step 5 depends on this.
 
 From this data + the image, build understanding of:
 
@@ -184,6 +189,10 @@ ORDER BY signal_name
 - **From Step 4:** You know the target keywords. You can check whether the title and bullets actually contain them.
 
 For each listing component (title, bullets, images, A+ content, video), only flag it if there is a genuine gap. If it's fine, skip it. The goal is actionable observations, not a checklist.
+
+**Bullets, analyze every bullet individually.** Do not judge the bullets as a block. For each bullet check: (a) is it redundant with another bullet (same message repeated)? (b) is it a wasted or low-value slot (generic disclaimer, irrelevant feature)? (c) is the product's #1 buyer concern covered, and does the key differentiator have its own bullet? If any bullet is weak, redundant, or a slot is wasted, produce a full suggested rewrite as in the ReignDrop example below. "The bullets are benefit-led and cover the features" is not an acceptable conclusion on its own.
+
+**Images, assess the whole set, not just the count.** Having viewed every image (Step 1), evaluate: is there a clean hero that shows the product clearly? Are any images low-value (photos of the retail box, duplicate angles, text too small to read on mobile)? Is there a compatibility or fit image where relevant? Is there enough lifestyle or use-case coverage for this buyer? Reporting only `image_count` is a bad observation.
 
 **Examples of good observations** (from ReignDrop baby ink pad, B07J298M2Z):
 
